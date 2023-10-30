@@ -17,11 +17,12 @@ class TestAccessNestedMap(unittest.TestCase):
     ])
     def test_access_nested_map(self, nested_map: Mapping,
                                path: Sequence, expected: int) -> None:
-        """Test the access_nested_map method.
+        """
+        Test the access_nested_map method.
         Args:
             nested_map (Dict): A dictionary that may have nested dictionaries
             path (List, tuple, set): Keys to get to the required value in the
-            nested dictionary
+                                     nested dictionary
         """
         response = access_nested_map(nested_map, path)
         self.assertEqual(response, expected)
@@ -32,25 +33,29 @@ class TestAccessNestedMap(unittest.TestCase):
     ])
     def test_access_nested_map_exception(self, nested_map: Mapping,
                                          path: Sequence) -> None:
-        """Test the access_nested_map method raises an error when expected to
+        """
+        Test the access_nested_map method raises an error when expected to
         Args:
             nested_map (Dict): A dictionary that may have nested dictionaries
             path (List, tuple, set): Keys to get to the required value in the
-            nested dictionary
+                                     nested dictionary
         """
         with self.assertRaises(Exception):
             access_nested_map(nested_map, path)
 
 
-class TestGetJson(unittest.Testcase):
-    """Test the get_json function"""
+class TestGetJson(unittest.TestCase):
+    """
+    Test the get_json function
+    """
     @parameterized.expand([
         ("http://example.com", {"payload": True}),
         ("http://holberton.io", {"payload": False})
     ])
     @patch("requests.get")
     def test_get_json(self, test_url, test_payload, mock_requests_get):
-        """Test the get_json method to ensure it returns the expected output.
+        """
+        Test the get_json method to ensure it returns the expected output.
         Args:
             url: url to send http request to
             payload: expected json response
@@ -62,7 +67,9 @@ class TestGetJson(unittest.Testcase):
 
 
 class TestMemoize(unittest.TestCase):
-    """Test the memoization decorator, memoize"""
+    """
+    Test the memoization decorator, memoize
+    """
     def test_memoize(self):
         """
         Test that utils.memoize decorator works as intended
